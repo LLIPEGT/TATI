@@ -30,7 +30,26 @@ class _HomePageState extends State<HomePage>
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _toggleEditMode() {
+    setState(() {
+      _isEditing = !_isEditing;
+      if (_isEditing) {
+        _animationController.forward();
+      } else {
+        _animationController.reverse();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -41,13 +60,41 @@ class _HomePageState extends State<HomePage>
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () {},
-            tooltip: 'Edit Information',
+            tooltip: 'Editar informação',
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {},
-            tooltip: 'Reset Information',
+            tooltip: 'Resetar informação',
           ),
+        ],
+      ),
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+            top: -80,
+            right: -70,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.tertiary.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -70,
+            left: -80,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                  color: theme.colorScheme.secondary.withOpacity(0.1),
+                  shape: BoxShape.circle
+                ),
+            )
+          )
         ],
       ),
     );

@@ -31,16 +31,11 @@ dependencies:
   auto_injector: ^2.1.0
   cupertino_icons: ^1.0.8
   faker_dart: ^0.2.2
+  flip_card: ^0.7.0
   flutter:
     sdk: flutter
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
